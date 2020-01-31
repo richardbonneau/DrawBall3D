@@ -12,7 +12,9 @@ public class LineMaker : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    // // Update is called once per frame
+
+
     void Update()
     {
 
@@ -20,11 +22,15 @@ public class LineMaker : MonoBehaviour
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
+        Vector3 point = ray.GetPoint(1000);
+
+
         if (Input.GetMouseButton(0))
         {
-            Physics.Raycast(ray, out hit);
-            print(hit.point);
-            Instantiate(line, hit.point, Quaternion.identity);
+            Physics.Raycast(ray, out hit, 10000);
+            if (hit.collider.gameObject.tag == "SidePlane") Instantiate(line, hit.point, transform.rotation);
+
+
         }
     }
 }

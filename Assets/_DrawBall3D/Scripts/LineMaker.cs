@@ -28,7 +28,7 @@ public class LineMaker : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             Physics.Raycast(ray, out hit, 10000);
-            if (hit.collider.gameObject.tag == "SidePlane") Instantiate(line, hit.point, transform.rotation);
+            if (hit.collider.gameObject.tag == "SidePlane") Instantiate(line, new Vector3(hit.point.x, hit.point.y, 0), transform.rotation);
 
 
         }
